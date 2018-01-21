@@ -7,7 +7,6 @@ LOG = {
 
   out: function(module, str) {
     t=new Date(); ts=t.getTime()-LOG._start;
-    //console.log('{'+ts+'ms} ['+module+'] '+str);
-    document.getElementById('msg').innerHTML += ('{'+ts+'ms} ['+module+'] '+str+'<br>');
+    console.log('{'+ts+'ms} ['+module+'] '+str);
   }
 };

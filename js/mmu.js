@@ -53,11 +53,14 @@ MMU = {
   },
 
   load: function(file) {
-    b=new BinFileReader(file);
-    MMU._rom=b.readString(b.getFileSize(), 0);
+	var reader = new FileReader();
+	reader.onloadend = function () {
+    MMU._rom = reader.result;
     MMU._carttype = MMU._rom.charCodeAt(0x0147);
 
     LOG.out('MMU', 'ROM loaded, '+MMU._rom.length+' bytes.');
+	}
+	reader.readAsBinaryString(file)
   },
 
   rb: function(addr) {
